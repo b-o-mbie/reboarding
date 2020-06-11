@@ -1,3 +1,42 @@
+*\~
+*.class
+**/classpath.txt
+**/.idea
+**/*.iml
+**/*.versionsBackup
+
+# Package Files #
+**/target/*.jar
+**/jars/*.jar
+eclipse-language-servers/**/*.jar
+*.war
+*.ear
+**/.sts4-cache/*
+**/test-projects/**/*.classpath
+**/test-projects/**/*.vscode
+**/test-projects/**/*.project
+**/test-projects/**/*.settings
+**/test-projects/**/*.springBeans
+
+# Exceptions
+!**/.mvn/wrapper/maven-wrapper.jar
+!**/jdt-ls-extension/**/test-projects/**/.classpath
+!**/jdt-ls-extension/**/test-projects/**/.project
+!**/jdt-ls-extension/**/test-projects/**/.settings
+
+# virtual machine crash logs, see https://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+servers/
+target/
+bin/
+*.log
+
+# Mac
+.DS_Store
+**/.DS_Store
+
+# Maven
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -7,5 +46,6 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
