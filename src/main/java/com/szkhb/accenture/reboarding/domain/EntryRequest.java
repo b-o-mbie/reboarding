@@ -15,6 +15,7 @@ public class EntryRequest {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private int id;
+	private String identifierName;
 	private LocalDateTime creationTimestamp = LocalDateTime.now();
 	private boolean isAllowedToEnter = false;
 	private boolean isEntered = false;

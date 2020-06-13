@@ -1,29 +1,28 @@
 package com.szkhb.accenture.reboarding.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DummyEntryRequestHandlerService implements EntryRequestHandlerService {
 
 	@Override
 	public String createNewRequest() {
-		// TODO Auto-generated method stub
-		return null;
+		return "==> return with new EntryRequest";
 	}
 
 	@Override
 	public String getStatusForRequest(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return "==> getStatusForRequest: ID: "+id;
 	}
 
 	@Override
 	public String tryEnter(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return "==> tryEnter: ID: "+id;
 	}
 
 	@Override
 	public String tryExit(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return "==> tryExit: ID: "+id;
 	}
 
 }

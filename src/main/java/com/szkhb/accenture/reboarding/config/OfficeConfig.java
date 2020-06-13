@@ -9,7 +9,6 @@ import lombok.Data;
 @Configuration
 @ConfigurationProperties(prefix = "office")
 public class OfficeConfig {
-
 	private int capacity;
 	private int utilization;
 
