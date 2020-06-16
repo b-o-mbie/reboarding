@@ -6,15 +6,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.szkhb.accenture.reboarding.service.ServiceFacade;
 
-
 @RestController
 @RequestMapping("status")
 public class StatusRestController {
 
 	private final ServiceFacade serviceFacade = new ServiceFacade();
-	
+
 	@RequestMapping(value = "/**")
-	public String getStatus(@RequestParam int id){
+	public String getStatus(@RequestParam int id) {
 		return serviceFacade.getStatusForRequest(id);
 	}
 }

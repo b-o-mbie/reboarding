@@ -9,9 +9,9 @@ import com.szkhb.accenture.reboarding.service.ServiceFacade;
 @RestController
 @RequestMapping("entry")
 public class EntryRestController {
-	
+
 	private final ServiceFacade serviceFacade = new ServiceFacade();
-	
+
 	@RequestMapping(value = "/**")
 	public String entry(@RequestParam int id) {
 		return serviceFacade.tryEnter(id);

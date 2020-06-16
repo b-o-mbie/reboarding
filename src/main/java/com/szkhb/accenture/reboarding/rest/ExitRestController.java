@@ -11,7 +11,7 @@ import com.szkhb.accenture.reboarding.service.ServiceFacade;
 public class ExitRestController {
 
 	private final ServiceFacade serviceFacade = new ServiceFacade();
-	
+
 	@RequestMapping(value = "/**")
 	public String exit(@RequestParam int id) {
 		return serviceFacade.tryExit(id);

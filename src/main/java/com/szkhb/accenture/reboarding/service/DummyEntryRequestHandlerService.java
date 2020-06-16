@@ -12,17 +12,17 @@ public class DummyEntryRequestHandlerService implements EntryRequestHandlerServi
 
 	@Override
 	public String getStatusForRequest(int id) {
-		return "==> getStatusForRequest: ID: "+id;
+		return "==> getStatusForRequest: ID: " + id;
 	}
 
 	@Override
 	public String tryEnter(int id) {
-		return "==> tryEnter: ID: "+id;
+		return "==> tryEnter: ID: " + id;
 	}
 
 	@Override
 	public String tryExit(int id) {
-		return "==> tryExit: ID: "+id;
+		return "==> tryExit: ID: " + id;
 	}
 
 }

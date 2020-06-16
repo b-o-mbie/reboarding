@@ -8,11 +8,11 @@ import com.szkhb.accenture.reboarding.service.ServiceFacade;
 @RestController
 @RequestMapping("register")
 public class RegisterRestController {
-	
+
 	private final ServiceFacade serviceFacade = new ServiceFacade();
-	
+
 	@RequestMapping(value = "/**")
-	public String getStatus(){
+	public String getStatus() {
 		return serviceFacade.createNewRequest();
 	}
 }
