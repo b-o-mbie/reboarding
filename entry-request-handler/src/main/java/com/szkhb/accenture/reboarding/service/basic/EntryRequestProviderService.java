@@ -1,4 +1,4 @@
-package com.szkhb.accenture.reboarding.service.paralel;
+package com.szkhb.accenture.reboarding.service.basic;
 
 import java.util.Optional;
 
