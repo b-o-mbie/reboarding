@@ -1,4 +1,4 @@
-package com.szkhb.accenture.reboarding.service.surface;
+package com.szkhb.accenture.reboarding.service;
 
 import org.springframework.stereotype.Service;
 

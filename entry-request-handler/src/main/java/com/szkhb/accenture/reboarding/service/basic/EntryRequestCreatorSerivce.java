@@ -1,4 +1,4 @@
-package com.szkhb.accenture.reboarding.service.midsingleton;
+package com.szkhb.accenture.reboarding.service.basic;
 
 import org.springframework.stereotype.Service;
 
