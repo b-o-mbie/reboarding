@@ -16,4 +16,9 @@ mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=[com.example]  -Dar
 #### extras:
 Use `-B` to execute as batch operation so it won't ask for any user input.
 
+## Service Flow Chart
+<img src="images/serviceFlowChart.png"/>
+
+## Module Flow Chart
+<img src="images/moduleFlowChart.png"/>
 
