@@ -1,0 +1,15 @@
+mvn archetype:generate -DgroupId=com.szkhb.accenture -DartifactId=reboarding
+# go into project folder
+
+
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=domain
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=http-commons
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=entry-request-handler
+
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=api-gateway
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=registration-service
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=status-service
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=entry-service
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=exit-service
+
+mvn archetype:generate -B -Dversion=0.0.1-SNAPSHOT -DgroupId=com.szkhb.accenture  -DartifactId=client
