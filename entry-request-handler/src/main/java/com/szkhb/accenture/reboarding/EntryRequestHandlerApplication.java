@@ -7,14 +7,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.szkhb.accenture.reboarding.config.OfficeConfig;
 import com.szkhb.accenture.reboarding.domain.EntryRequest;
 import com.szkhb.accenture.reboarding.repository.EntryRequestRepository;
 
 @SpringBootApplication
+@RestController
 @EnableConfigurationProperties
-public class ReboardingApplication {
+public class EntryRequestHandlerApplication {
 
 	@Autowired
 	private OfficeConfig officeConfig;
@@ -23,7 +26,7 @@ public class ReboardingApplication {
 	private EntryRequestRepository entryRepo;
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReboardingApplication.class, args);
+		SpringApplication.run(EntryRequestHandlerApplication.class, args);
 	}
 
 	@Bean
@@ -37,6 +40,11 @@ public class ReboardingApplication {
 			System.out.println(new EntryRequest());
 
 		};
+	}
+
+	@RequestMapping("/heartbeat")
+	public String heartbeat() {
+		return "Hello Docker World, this is " + this.getClass().getName();
 	}
 
 }
