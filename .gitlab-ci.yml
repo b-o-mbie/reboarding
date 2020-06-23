@@ -1,0 +1,16 @@
+stages:
+  - maven
+  - build
+  - deploy
+
+maven:
+  stage: maven
+  script: "mvn clean install"
+  
+build:
+  stage: build
+  script: "docker-compose build"
+
+deploy:
+  stage: deploy
+  script: "docker-compose push"
