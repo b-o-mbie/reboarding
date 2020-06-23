@@ -1,3 +1,4 @@
+image: docker:latest
 stages:
   - maven
   - build
@@ -6,7 +7,7 @@ stages:
 maven:
   stage: maven
   script: "mvn clean install"
-  
+
 build:
   stage: build
   script: "docker-compose build"
