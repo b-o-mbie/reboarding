@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableConfigurationProperties
-public class ExitServiceRunnerApplication {
+public class RegistrationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExitServiceRunnerApplication.class, args);
+		SpringApplication.run(RegistrationServiceApplication.class, args);
 	}
 
 	@Bean
@@ -27,8 +27,8 @@ public class ExitServiceRunnerApplication {
 		};
 	}
 
-	@RequestMapping("/exit")
-	public String exit() {
+	@RequestMapping("/registration")
+	public String registration() {
 		return "Hello Docker World, this is " + this.getClass().getName();
 	}
 }

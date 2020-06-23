@@ -1,4 +1,4 @@
-package com.szkhb.accenture;
+package com.szkhb.accenture.reboarding;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableConfigurationProperties
-public class EntryRequestHandlerApplication {
+public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EntryRequestHandlerApplication.class, args);
+		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
 
 	@Bean

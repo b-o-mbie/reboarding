@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableConfigurationProperties
-public class StatusServiceRunnerApplication {
+public class StatusServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StatusServiceRunnerApplication.class, args);
+		SpringApplication.run(StatusServiceApplication.class, args);
 	}
 
 	@Bean

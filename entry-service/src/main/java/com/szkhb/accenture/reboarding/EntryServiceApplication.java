@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @EnableConfigurationProperties
-public class RegistrationServiceRunnerApplication {
+public class EntryServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RegistrationServiceRunnerApplication.class, args);
+		SpringApplication.run(EntryServiceApplication.class, args);
 	}
 
 	@Bean
@@ -27,8 +27,8 @@ public class RegistrationServiceRunnerApplication {
 		};
 	}
 
-	@RequestMapping("/registration")
-	public String registration() {
+	@RequestMapping("/entry")
+	public String entry() {
 		return "Hello Docker World, this is " + this.getClass().getName();
 	}
 }
