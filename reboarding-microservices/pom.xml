@@ -76,9 +76,6 @@
 						<from>
 							<image>openjdk:14.0.1-jdk</image>
 						</from>
-						<to>
-							<credHelper>desktop</credHelper>
-						</to>
 						<container>
 							<user>nobody:nogroup</user>
 						</container>
