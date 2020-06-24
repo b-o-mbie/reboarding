@@ -18,4 +18,4 @@ build:
   stage: jib
   script:
     - "cd reboarding-microservices"
-    - "mvn jib:build"
+    - "mvn install jib:build"
