@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.szkhb.accenture</groupId>
+		<artifactId>reboarding</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>reboarding-microservices</artifactId>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>entry-request-handler</module>
+		<module>api-gateway</module>
+		<module>registration-service</module>
+		<module>status-service</module>
+		<module>entry-service</module>
+		<module>exit-service</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<!-- test Deps -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- in-app Deps -->
+		<dependency>
+			<groupId>com.szkhb.accenture</groupId>
+			<artifactId>domain</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.szkhb.accenture</groupId>
+			<artifactId>http-commons</artifactId>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<image>bombie/reboarding:${project.artifactId}</image>
+	</properties>
+
+
+
+	<build>
+		<!-- Defines plugins that are used in the modules. -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.google.cloud.tools</groupId>
+					<artifactId>jib-maven-plugin</artifactId>
+					<version>2.4.0</version>
+					<configuration>
+						<from>
+							<image>openjdk:14.0.1-jdk</image>
+						</from>
+						<to>
+							<credHelper>desktop</credHelper>
+						</to>
+						<container>
+							<user>nobody:nogroup</user>
+						</container>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

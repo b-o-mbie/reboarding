@@ -23,14 +23,8 @@
 	<modules>
 		<module>domain</module>
 		<module>http-commons</module>
-		<module>entry-request-handler</module>
-		<module>api-gateway</module>
-		<module>registration-service</module>
-		<module>status-service</module>
-		<module>entry-service</module>
-		<module>exit-service</module>
 		<module>client</module>
-		<module>maven-dependency-groups</module>
+		<module>reboarding-microservices</module>
 	</modules>
 
 	<properties>
