@@ -18,4 +18,4 @@ build:
   script:
     - "mvn install"
     - "cd reboarding-microservices"
-    - "mvn jib:build"
+    - "mvn jib:build -Djib.to.auth.username=$REGISTRY_USER -Djib.to.auth.password=$REGISTRY_PASSWORD"

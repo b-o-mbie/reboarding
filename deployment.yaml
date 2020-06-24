@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          image: bombie/reboarding:api-gateway
+          image: registry.gitlab.com/bombie/reboarding:api-gateway
           ports:
             - containerPort: 8080
 ---
@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
         - name: registration-service
-          image: bombie/reboarding:registration-service
+          image: registry.gitlab.com/bombie/reboarding:registration-service
           ports:
             - containerPort: 8080
 ---
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: status-service
-          image: bombie/reboarding:status-service
+          image: registry.gitlab.com/bombie/reboarding:status-service
           ports:
             - containerPort: 8080
 ---
@@ -130,7 +130,7 @@ spec:
     spec:
       containers:
         - name: entry-service
-          image: bombie/reboarding:entry-service
+          image: registry.gitlab.com/bombie/reboarding:entry-service
           ports:
             - containerPort: 8080
 ---
@@ -164,7 +164,7 @@ spec:
     spec:
       containers:
         - name: exit-service
-          image: bombie/reboarding:exit-service
+          image: registry.gitlab.com/bombie/reboarding:exit-service
           ports:
             - containerPort: 8080
 ---
@@ -198,6 +198,6 @@ spec:
     spec:
       containers:
         - name: entry-request-handler
-          image: bombie/reboarding:entry-request-handler
+          image: registry.gitlab.com/bombie/reboarding:entry-request-handler
           ports:
             - containerPort: 8080

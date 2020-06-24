@@ -61,9 +61,9 @@
 	</dependencies>
 
 	<properties>
-		<image>bombie/reboarding:${project.artifactId}</image>
+		<image>registry.gitlab.com/bombie/reboarding:${project.artifactId}</image>
 	</properties>
-	
+
 	<build>
 		<!-- Defines plugins that are used in the modules. -->
 		<pluginManagement>
