@@ -16,5 +16,6 @@ build:
   extends: maven
   stage: jib
   script:
+    - "mvn install"
     - "cd reboarding-microservices"
     - "mvn jib:build"
