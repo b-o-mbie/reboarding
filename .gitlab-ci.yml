@@ -17,5 +17,6 @@ build:
   image: maven:3-jdk-8
   stage: jib
   script:
+    - "mvn install"
     - "cd reboarding-microservices"
-    - "mvn install jib:build"
+    - "mvn jib:build"
