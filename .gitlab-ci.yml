@@ -50,3 +50,6 @@ install:
 deploy:
   stage: deploy
   script: "mvn jib:build -Djib.to.auth.username=$CI_REGISTRY_USER -Djib.to.auth.password=$CI_REGISTRY_PASSWORD"
+
+# kubernetes config generation is still missing
+# skaffold render -p qa --output='k8s/qa.yaml'
