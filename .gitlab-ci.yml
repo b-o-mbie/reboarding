@@ -1,10 +1,17 @@
 image: maven:latest
 cache:
+  key: "$CI_COMMIT_REF_SLUG"
   paths:
-    - ./
+    - .m2
+    - ./domain
+    - ./http-commons
+    - ./reboarding-microservices
+    - ./client
+    
 
 variables:
   SPRING_PROFILES_ACTIVE: gitlab-ci
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
 
 stages:
   - validate
