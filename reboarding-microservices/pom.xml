@@ -25,10 +25,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<!-- Service Discovery -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.sbb</groupId>
+			<artifactId>springboot-graceful-shutdown</artifactId>
+			<version>2.0.1</version>
 		</dependency>
 
 		<!-- test Deps -->
@@ -58,30 +69,21 @@
 			<groupId>com.szkhb.accenture</groupId>
 			<artifactId>http-commons</artifactId>
 		</dependency>
+
+		<!-- Dev deps -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 	</dependencies>
 
 	<properties>
 		<image>registry.gitlab.com/bombie/reboarding:${project.artifactId}</image>
 	</properties>
-
-	<build>
-		<!-- Defines plugins that are used in the modules. -->
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>com.google.cloud.tools</groupId>
-					<artifactId>jib-maven-plugin</artifactId>
-					<version>2.4.0</version>
-					<configuration>
-						<from>
-							<image>openjdk:14.0.1-jdk</image>
-						</from>
-						<container>
-							<user>nobody:nogroup</user>
-						</container>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
 </project>

@@ -1,7 +1,6 @@
 package com.szkhb.accenture.reboarding;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -11,13 +10,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication;
+
 @SpringBootApplication
 @RestController
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
+//@EnableEurekaServer
 public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiGatewayApplication.class, args);
+		GracefulshutdownSpringApplication.run(ApiGatewayApplication.class, args);
 	}
 
 	@Bean
@@ -29,7 +31,7 @@ public class ApiGatewayApplication {
 
 	@RequestMapping("/api")
 	public String api() {
-		return "Hello Docker World, this is " + this.getClass().getName();
+		return "i can't comprehend that this is actually working (updated)";
 	}
 
 }

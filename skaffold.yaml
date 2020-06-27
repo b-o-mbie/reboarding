@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: reboarding
+build:
+  artifacts:
+    - image: registry.gitlab.com/bombie/reboarding
+      context: .
+      jib:
+        project: :api-gateway
+
+deploy:
+  kustomize:
+    paths:
+      - kustomize/base
+
+profiles:
+  - name: qa
+    deploy:
+      kustomize:
+        paths: 
+          - kustomize/qa
