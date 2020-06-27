@@ -1,0 +1,46 @@
+image: maven:latest
+variables:
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+
+stages:
+  - validate
+  - compile
+  - test
+  - package
+  - verify
+  - install
+  - mvn-deploy
+  - docker-deploy
+
+
+validate:
+  stage: validate
+  script: "mvn validate"
+
+compile:
+  stage: compile
+  script: "mvn compile"
+
+test:
+  stage: test
+  script: "mvn test"
+
+package:
+  stage: package
+  script: "mvn package"
+
+verify:
+  stage: verify
+  script: "mvn verify"
+
+install:
+  stage: install
+  script: "mvn install"
+
+mvn-deploy:
+  stage: mvn-deploy
+  script: "mvn deploy"
+
+docker-deploy:
+  stage: docker-deploy
+  script: "mvn jib:build -Djib.to.auth.username=$CI_REGISTRY_USER -Djib.to.auth.password=$CI_REGISTRY_PASSWORD"
