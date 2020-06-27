@@ -23,7 +23,7 @@ public class EntryRequestHandlerApplication {
 	private OfficeConfig officeConfig;
 
 	@Autowired
-	private EntryRequestRepository entryRepÏo;
+	private EntryRequestRepository entryRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EntryRequestHandlerApplication.class, args);
