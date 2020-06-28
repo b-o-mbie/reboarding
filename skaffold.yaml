@@ -20,9 +20,3 @@ profiles:
       kustomize:
         paths:
           - kustomize/qa
-
-  - name: test-erh
-    deploy:
-      kustomize:
-        paths:
-          - kustomize/entry-request-handler

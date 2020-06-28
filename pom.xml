@@ -71,6 +71,13 @@
 				<scope>import</scope>
 			</dependency>
 
+			<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>6.1.5.Final</version>
+			</dependency>
+
 			<!-- Tests; https://mvnrepository.com/artifact/org.mockito/mockito-all -->
 			<dependency>
 				<groupId>org.mockito</groupId>
