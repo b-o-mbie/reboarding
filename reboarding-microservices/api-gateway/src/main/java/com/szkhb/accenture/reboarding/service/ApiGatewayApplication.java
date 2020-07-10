@@ -1,4 +1,4 @@
-package com.szkhb.accenture.reboarding;
+package com.szkhb.accenture.reboarding.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,61 +11,59 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.szkhb.accenture.reboarding.config.RegistrationServiceConfig;
 import com.szkhb.accenture.reboarding.domain.EntryRequest;
-import com.szkhb.accenture.reboarding.domain.User;
+import com.szkhb.accenture.reboarding.service.config.ApiGatewayConfig;
+import com.szkhb.accenture.reboarding.service.httpcommons.RegistrationServiceProvider;
 
 import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication;
 
 @SpringBootApplication
 @RestController
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
-public class RegistrationServiceApplication {
+public class ApiGatewayApplication {
 
     @Autowired
-    RegistrationServiceConfig config;
+    private RegistrationServiceProvider registrationService;
 
     @Autowired
-    ObjectWriter writer;
+    private ApiGatewayConfig config;
 
     public static void main(String[] args) {
-        GracefulshutdownSpringApplication.run(RegistrationServiceApplication.class, args);
+        GracefulshutdownSpringApplication.run(ApiGatewayApplication.class, args);
     }
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-
             System.out.println("CommandLineRunner has started by " + this.getClass()
                     .getSimpleName());
-
         };
+    }
+
+    @RequestMapping("/config")
+    public String api() {
+        return config.toString();
     }
 
     private int c = 0;
 
     @GetMapping("/registration/{userId}")
-    public String getEntryRequest(@PathVariable("userId") int userId) throws JsonProcessingException {
-        System.out.println("GET: getEntryRequest for user@" + userId + " :: " + ++c);
-        return writer.writeValueAsString(getEntry(userId));
-    }
-
-    private EntryRequest getEntry(int userId) {
-        EntryRequest entryRequest = new EntryRequest();
-        User user = new User();
-        user.setId(userId);
-        entryRequest.setUser(user);
-        return entryRequest;
+    public String getEntry(@PathVariable("userId") int userId) {
+        System.out.println("GET: registration/" + userId + " :: " + ++c);
+        EntryRequest entry = registrationService
+                .getEntryRequest(userId);
+        return entry.toString();
     }
 
     @PostMapping("/registration/{userId}")
-    public String getExistingOrCreateNewEntryRequest(@PathVariable("userId") int userId)
-            throws JsonProcessingException {
-        System.out.println("POST: getEntryRequest for user@" + userId);
-        return writer.writeValueAsString(getEntry(userId));
+    public String getOrCreateEntry(@PathVariable("userId") int userId) {
+        System.out.println("POST: registration/" + userId);
+        return registrationService
+                .getExistingOrCreateNewEntryRequest(userId)
+                .toString();
     }
+
 }

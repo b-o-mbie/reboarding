@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: general
+data:
+  application.yml: |-
+    api-gateway:
+      test: "api-test"
+    registration-service:
+      test: "registration-test"
+    services: 
+      - api-gateway:
+          name: "api-gateway"
+      - registration-service:
+          name: "registration-service"
+        
+      

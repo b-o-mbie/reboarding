@@ -1,0 +1,16 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+spring:
+  application:
+    name: registration-service
+  cloud:
+    kubernetes:
+      config:
+        sources:
+         - name: general
+      reload:
+        enabled: true

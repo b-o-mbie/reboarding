@@ -4,12 +4,21 @@ metadata:
   name: reboarding
 build:
   artifacts:
-    - image: registry.gitlab.com/bombie/reboarding
+    - image: registry.gitlab.com/bombie/reboarding/api-gateway
       context: .
       jib:
         project: :api-gateway
+    - image: registry.gitlab.com/bombie/reboarding/registration-service
+      context: .
+      jib: 
+        project: :registration-service
+    - image: registry.gitlab.com/bombie/reboarding/status-service
+      context: .
+      jib:
+        project: :status-service
 
 deploy:
+  statusCheckDeadlineSeconds: 300
   kustomize:
     paths:
       - kustomize/base
@@ -20,3 +29,8 @@ profiles:
       kustomize:
         paths:
           - kustomize/qa
+  - name: test
+    deploy:
+      kustomize:
+        paths:
+          - kustomize/test

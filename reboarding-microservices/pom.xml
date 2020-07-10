@@ -18,7 +18,6 @@
 		<module>status-service</module>
 		<module>entry-service</module>
 		<module>exit-service</module>
-		<module>config-server</module>
 	</modules>
 
 	<dependencies>
@@ -31,25 +30,21 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-		<!-- Service Discovery -->
+		<!-- Microservice support -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-kubernetes</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>ch.sbb</groupId>
-			<artifactId>springboot-graceful-shutdown</artifactId>
-			<version>2.0.1</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes-config</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
+			<groupId>ch.sbb</groupId>
+			<artifactId>springboot-graceful-shutdown</artifactId>
+			<version>2.0.1</version>
 		</dependency>
 
 		<!-- test Deps -->
@@ -94,6 +89,6 @@
 	</dependencies>
 
 	<properties>
-		<image>registry.gitlab.com/bombie/reboarding:${project.artifactId}</image>
+		<image>registry.gitlab.com/bombie/reboarding/${project.artifactId}:${project.version}</image>
 	</properties>
 </project>

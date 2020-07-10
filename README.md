@@ -22,3 +22,6 @@ Use `-B` to execute as batch operation so it won't ask for any user input.
 ## Module Flow Chart
 <img src=".readme/moduleFlowChart.png"/>
 
+## Sources:
+https://stackoverflow.com/questions/27952472/serialize-deserialize-java-8-java-time-with-jackson-json-mapper
+

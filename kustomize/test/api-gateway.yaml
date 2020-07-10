@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway
+spec:
+  selector:
+    app: api-gateway
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api-gateway
+  name: api-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - image: registry.gitlab.com/bombie/reboarding/api-gateway:0.0.1-SNAPSHOT
+          name: api-gateway
+          resources:
+            requests:
+              memory: 256M
+              cpu: 1000m
+            limits:
+              memory: 512M
+              cpu: 2000m
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+          readinessProbe:
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            failureThreshold: 1
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+          
