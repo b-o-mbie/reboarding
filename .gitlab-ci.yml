@@ -25,7 +25,7 @@ stages:
 
 validate:
   stage: validate
-  script: "mvn validate"
+  script: "mvn clean validate"
 
 compile:
   stage: compile
