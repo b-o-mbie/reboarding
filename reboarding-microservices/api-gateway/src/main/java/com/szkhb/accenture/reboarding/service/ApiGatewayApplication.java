@@ -25,45 +25,41 @@ import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
 public class ApiGatewayApplication {
 
-    @Autowired
-    private RegistrationServiceProvider registrationService;
+	@Autowired
+	private RegistrationServiceProvider registrationService;
 
-    @Autowired
-    private ApiGatewayConfig config;
+	@Autowired
+	private ApiGatewayConfig config;
 
-    public static void main(String[] args) {
-        GracefulshutdownSpringApplication.run(ApiGatewayApplication.class, args);
-    }
+	public static void main(String[] args) {
+		GracefulshutdownSpringApplication.run(ApiGatewayApplication.class, args);
+	}
 
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-            System.out.println("CommandLineRunner has started by " + this.getClass()
-                    .getSimpleName());
-        };
-    }
+	@Bean
+	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+		return args -> {
+			System.out.println("CommandLineRunner has started by " + this.getClass().getSimpleName());
+		};
+	}
 
-    @RequestMapping("/config")
-    public String api() {
-        return config.toString();
-    }
+	@RequestMapping("/config")
+	public String api() {
+		return config.toString();
+	}
 
-    private int c = 0;
+	private int c = 0;
 
-    @GetMapping("/registration/{userId}")
-    public String getEntry(@PathVariable("userId") int userId) {
-        System.out.println("GET: registration/" + userId + " :: " + ++c);
-        EntryRequest entry = registrationService
-                .getEntryRequest(userId);
-        return entry.toString();
-    }
+	@GetMapping("/registration/{userId}")
+	public String getEntry(@PathVariable("userId") int userId) {
+		System.out.println("GET: registration/" + userId + " :: " + ++c);
+		EntryRequest entry = registrationService.getExistingOrCreateNewEntryRequest(userId);
+		return entry.toString();
+	}
 
-    @PostMapping("/registration/{userId}")
-    public String getOrCreateEntry(@PathVariable("userId") int userId) {
-        System.out.println("POST: registration/" + userId);
-        return registrationService
-                .getExistingOrCreateNewEntryRequest(userId)
-                .toString();
-    }
+	@PostMapping("/registration/{userId}")
+	public String getOrCreateEntry(@PathVariable("userId") int userId) {
+		System.out.println("POST: registration/" + userId);
+		return registrationService.getExistingOrCreateNewEntryRequest(userId).toString();
+	}
 
 }

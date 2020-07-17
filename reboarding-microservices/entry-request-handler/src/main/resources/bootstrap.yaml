@@ -11,7 +11,7 @@ management:
         
 spring:
   application:
-    name: api-gateway
+    name: entry-request-handler
   cloud:
     kubernetes:
       config:

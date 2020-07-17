@@ -4,3 +4,4 @@ resources:
   - general-config.yaml
   - api-gateway.yaml
   - registration-service.yaml
+  - entry-request-handler.yaml

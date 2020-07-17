@@ -10,21 +10,26 @@ import com.szkhb.accenture.reboarding.domain.EntryRequest;
 
 @Service
 @EnableDiscoveryClient
-public class RegistrationServiceProvider extends ServiceInterfaceTemplate {
+public class EntryRequestHandlerProvider extends ServiceInterfaceTemplate {
 
-	private OnePathServiceDiscoveryConfig registrationServiceConfig;
+	private OnePathServiceDiscoveryConfig erhServiceConfig;
 
 	@Autowired
 	private void init(ServiceDiscoveryConfigs servicesConfig) {
-		registrationServiceConfig = servicesConfig.getRegistrationService();
-		System.out.println(registrationServiceConfig);
+		erhServiceConfig = servicesConfig.getEntryRequestHandler();
+		System.out.println(erhServiceConfig);
 	}
 
-	public EntryRequest getExistingOrCreateNewEntryRequest(int userId) {
-		return postForObject(registrationServiceConfig.getName(), generateFullPath(userId), EntryRequest.class);
+	public EntryRequest getExistingEntryRequest(int userId) {
+		return getForObject(erhServiceConfig.getName(), generateFullPath(userId), EntryRequest.class);
+	}
+
+	public EntryRequest createNewEntryRequest(int userId) {
+		return postForObject(erhServiceConfig.getName(), generateFullPath(userId), EntryRequest.class);
 	}
 
 	private String generateFullPath(int userId) {
-		return registrationServiceConfig.getPath() + userId;
+		return erhServiceConfig.getPath() + userId;
 	}
+
 }

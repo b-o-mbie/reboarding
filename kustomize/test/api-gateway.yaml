@@ -17,7 +17,7 @@ metadata:
     app: api-gateway
   name: api-gateway
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: api-gateway
@@ -32,22 +32,23 @@ spec:
           resources:
             requests:
               memory: 256M
-              cpu: 1000m
+              cpu: 250m
             limits:
-              memory: 512M
-              cpu: 2000m
+              memory: 256M
+              cpu: 1000m
           ports:
             - containerPort: 8080
           livenessProbe:
-            initialDelaySeconds: 3
-            periodSeconds: 5
+            initialDelaySeconds: 20
+            periodSeconds: 3
+            failureThreshold: 5
             httpGet:
               path: /actuator/health/liveness
               port: 8080
           readinessProbe:
-            initialDelaySeconds: 3
-            periodSeconds: 5
-            failureThreshold: 1
+            initialDelaySeconds: 20
+            periodSeconds: 3
+            failureThreshold: 5 
             httpGet:
               path: /actuator/health/readiness
               port: 8080

@@ -9,9 +9,22 @@ data:
     registration-service:
       test: "registration-test"
     services: 
-      - api-gateway:
-          name: "api-gateway"
-      - registration-service:
-          name: "registration-service"
+      api-gateway:
+        name: "api-gateway"
+      registration-service:
+        name: "registration-service"
+        path: "/registration/"
+      status-service:
+        name: "status-service"
+        path: "/status/"
+      entry-service:
+        name: "entry-service"
+        path: "/entry/"
+      exit-service:
+        name: "exit-service"
+        path: "/exit/"
+      entry-request-handler:
+        name: "registration-service"
+        path: "/entry-request/"
         
       

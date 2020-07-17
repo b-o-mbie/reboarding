@@ -11,5 +11,4 @@ import lombok.Data;
 public class OfficeConfig {
 	private int capacity;
 	private int utilization;
-
 }
