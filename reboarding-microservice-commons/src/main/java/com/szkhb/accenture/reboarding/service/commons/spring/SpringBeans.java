@@ -1,4 +1,4 @@
-package com.szkhb.accenture.reboarding.service.httpcommons.spring;
+package com.szkhb.accenture.reboarding.service.commons.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

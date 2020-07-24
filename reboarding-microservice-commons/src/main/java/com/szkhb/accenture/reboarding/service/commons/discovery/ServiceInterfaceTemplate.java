@@ -1,5 +1,5 @@
 
-package com.szkhb.accenture.reboarding.service.httpcommons;
+package com.szkhb.accenture.reboarding.service.commons.discovery;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;

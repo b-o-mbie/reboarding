@@ -1,5 +1,7 @@
 package com.szkhb.accenture.reboarding.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -11,12 +13,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.szkhb.accenture.reboarding.domain.EntryRequest;
-import com.szkhb.accenture.reboarding.service.config.ApiGatewayConfig;
-import com.szkhb.accenture.reboarding.service.httpcommons.RegistrationServiceProvider;
+import com.szkhb.accenture.reboarding.service.commons.converters.ObjectToJSONConverterService;
+import com.szkhb.accenture.reboarding.service.commons.discovery.RegistrationServiceProvider;
 
 import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication;
 
@@ -25,41 +26,34 @@ import ch.sbb.esta.openshift.gracefullshutdown.GracefulshutdownSpringApplication
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
 public class ApiGatewayApplication {
 
-	@Autowired
-	private RegistrationServiceProvider registrationService;
+  private static final Logger LOGGER = LoggerFactory.getLogger(ApiGatewayApplication.class);
 
-	@Autowired
-	private ApiGatewayConfig config;
+  @Autowired
+  private RegistrationServiceProvider registrationService;
 
-	public static void main(String[] args) {
-		GracefulshutdownSpringApplication.run(ApiGatewayApplication.class, args);
-	}
+  @Autowired
+  private ObjectToJSONConverterService converter;
 
-	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args -> {
-			System.out.println("CommandLineRunner has started by " + this.getClass().getSimpleName());
-		};
-	}
+  public static void main(String[] args) {
+    GracefulshutdownSpringApplication.run(ApiGatewayApplication.class, args);
+  }
 
-	@RequestMapping("/config")
-	public String api() {
-		return config.toString();
-	}
+  @Bean
+  public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+    return args -> {
+      LOGGER.info("CommandLineRunner has started by " + this.getClass().getSimpleName());
+    };
+  }
 
-	private int c = 0;
+  @GetMapping("/registration/{userId}")
+  public String getEntry(@PathVariable("userId") int userId) {
+    return getOrCreateEntry(userId);
+  }
 
-	@GetMapping("/registration/{userId}")
-	public String getEntry(@PathVariable("userId") int userId) {
-		System.out.println("GET: registration/" + userId + " :: " + ++c);
-		EntryRequest entry = registrationService.getExistingOrCreateNewEntryRequest(userId);
-		return entry.toString();
-	}
-
-	@PostMapping("/registration/{userId}")
-	public String getOrCreateEntry(@PathVariable("userId") int userId) {
-		System.out.println("POST: registration/" + userId);
-		return registrationService.getExistingOrCreateNewEntryRequest(userId).toString();
-	}
+  @PostMapping("/registration/{userId}")
+  public String getOrCreateEntry(@PathVariable("userId") int userId) {
+    EntryRequest entryRequest = registrationService.getExistingOrCreateNewEntryRequest(userId);
+    return converter.convert(entryRequest);
+  }
 
 }

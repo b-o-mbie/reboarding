@@ -13,12 +13,12 @@ import lombok.Data;
 @Data
 @Entity
 public class EntryRequest {
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Id
-    private int id;
-    @ManyToOne
-    private User user;
-    private LocalDateTime creationTimestamp = LocalDateTime.now();
-    private boolean isAllowedToEnter = false;
-    private boolean isEntered = false;
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id
+  private int id;
+  @ManyToOne
+  private User user;
+  private LocalDateTime creationTimestamp = LocalDateTime.now();
+  private boolean isAllowedToEnter = false;
+  private boolean isEntered = false;
 }

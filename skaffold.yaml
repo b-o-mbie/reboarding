@@ -16,6 +16,10 @@ build:
       context: .
       jib:
         project: :status-service
+    - image: registry.gitlab.com/bombie/reboarding/entry-request-handler
+      context: .
+      jib:
+        project: :entry-request-handler
 
 deploy:
   statusCheckDeadlineSeconds: 300

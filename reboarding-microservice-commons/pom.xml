@@ -9,9 +9,7 @@
 		<artifactId>reboarding</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>http-commons</artifactId>
-	<name>http-commons</name>
-	<url>http://maven.apache.org</url>
+	<artifactId>reboarding-microservice-commons</artifactId>
 
 	<dependencies>
 		<dependency>

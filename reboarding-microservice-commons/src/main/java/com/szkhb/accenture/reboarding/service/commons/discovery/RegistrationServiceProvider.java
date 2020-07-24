@@ -1,12 +1,12 @@
-package com.szkhb.accenture.reboarding.service.httpcommons;
+package com.szkhb.accenture.reboarding.service.commons.discovery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.stereotype.Service;
 
-import com.szkhb.accenture.reboarding.config.discovery.OnePathServiceDiscoveryConfig;
-import com.szkhb.accenture.reboarding.config.discovery.ServiceDiscoveryConfigs;
 import com.szkhb.accenture.reboarding.domain.EntryRequest;
+import com.szkhb.accenture.reboarding.service.commons.discovery.config.OnePathServiceDiscoveryConfig;
+import com.szkhb.accenture.reboarding.service.commons.discovery.config.ServiceDiscoveryConfigs;
 
 @Service
 @EnableDiscoveryClient
@@ -17,7 +17,6 @@ public class RegistrationServiceProvider extends ServiceInterfaceTemplate {
 	@Autowired
 	private void init(ServiceDiscoveryConfigs servicesConfig) {
 		registrationServiceConfig = servicesConfig.getRegistrationService();
-		System.out.println(registrationServiceConfig);
 	}
 
 	public EntryRequest getExistingOrCreateNewEntryRequest(int userId) {

@@ -24,7 +24,7 @@ data:
         name: "exit-service"
         path: "/exit/"
       entry-request-handler:
-        name: "registration-service"
+        name: "entry-request-handler"
         path: "/entry-request/"
         
       

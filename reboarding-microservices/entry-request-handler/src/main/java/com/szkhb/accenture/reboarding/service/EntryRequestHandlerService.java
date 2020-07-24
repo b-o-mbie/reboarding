@@ -1,12 +1,43 @@
 package com.szkhb.accenture.reboarding.service;
 
-public interface EntryRequestHandlerService {
+import java.util.Optional;
 
-	public String createNewRequest();
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-	public String getStatusForRequest(int id);
+import com.szkhb.accenture.reboarding.domain.DescriptiveEntryRequestWrapper;
+import com.szkhb.accenture.reboarding.domain.EntryRequest;
+import com.szkhb.accenture.reboarding.service.basic.DescriptiveEntryRequestWrapperService;
+import com.szkhb.accenture.reboarding.service.basic.EntryRequestProviderService;
 
-	public String tryEnter(int id);
+@Service
+public class EntryRequestHandlerService {
 
-	public String tryExit(int id);
+  @Autowired
+  private EntryRequestProviderService entryRequestProviderService;
+
+  @Autowired
+  private DescriptiveEntryRequestWrapperService descriptiveEntryRequestBundlerService;
+
+  public EntryRequest getExistingOrCreateNewEntryRequest(int userId) {
+    return entryRequestProviderService.getExistingOrCreateNewEntryRequest(userId);
+  }
+
+  public Optional<EntryRequest> getExistingEntryRequest(int userId) {
+    return entryRequestProviderService.getExistingEntryRequest(userId);
+  }
+
+  public Optional<DescriptiveEntryRequestWrapper> getStatusForRequest(int userId) {
+    return getExistingEntryRequest(userId)
+      .map(descriptiveEntryRequestBundlerService::wrap);
+  }
+
+  public Boolean tryEnter(int id) {
+    return null;
+  }
+
+  public Boolean tryExit(int id) {
+    return null;
+  }
+
 }

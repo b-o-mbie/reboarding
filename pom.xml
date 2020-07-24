@@ -22,7 +22,7 @@
 
 	<modules>
 		<module>domain</module>
-		<module>http-commons</module>
+		<module>reboarding-microservice-commons</module>
 		<module>client</module>
 		<module>reboarding-microservices</module>
 	</modules>
@@ -58,7 +58,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.szkhb.accenture</groupId>
-				<artifactId>http-commons</artifactId>
+				<artifactId>reboarding-microservice-commons</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 

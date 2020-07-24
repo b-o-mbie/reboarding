@@ -1,4 +1,4 @@
-package com.szkhb.accenture.reboarding.config.discovery;
+package com.szkhb.accenture.reboarding.service.commons.discovery.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

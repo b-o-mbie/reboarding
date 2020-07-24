@@ -72,7 +72,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.szkhb.accenture</groupId>
-			<artifactId>http-commons</artifactId>
+			<artifactId>reboarding-microservice-commons</artifactId>
 		</dependency>
 
 		<!-- Dev deps -->

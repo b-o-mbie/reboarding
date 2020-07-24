@@ -10,4 +10,12 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>entry-request-handler</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
 </project>
